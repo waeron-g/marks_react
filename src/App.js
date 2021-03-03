@@ -6,11 +6,11 @@ function App() {
   return (
     <div className="App">
       <Header route = {window.location.pathname}/>
-      <Switch>
-        <Route exact path='/roster' component={Roster}/>
-      </Switch>
     <main>
-      <Groups/>
+    <Switch>
+        <Route exact path='/roster' component={Roster}/>
+        <Route path='/groups' component={Groups}/>
+    </Switch>
     </main>
     </div>
   );

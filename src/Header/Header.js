@@ -25,22 +25,25 @@ class Header extends React.Component
                 },
             ]
         }
-        const items = [];
-        
-        var class1 = 'active';
-        for (const  item of links.Links) {
-            if (item.path === window.location.pathname)
-            class1 = 'active';
-            else
-            class1= "";
-            items.push(<a href = {item.path} className={class1}>{item.name}</a>);
-        }
         return (
-            <header class = "main_menu">
+            <header className = "main_menu">
             <a href = "/" ><img src= {logo} height="45px"></img></a>
-            {items}
+            <this.menuElements links = {links} route={window.location.pathname}/>
             </header>
         )
+    }
+
+    menuElements (props)
+    {
+        let items = props.links.Links.map((item) =>{
+            let style="";
+            if (item.path === props.route)
+                style = "active";
+        return(
+        <a key={item.path} href = {item.path} className={style}>{item.name}</a>);});
+        return(
+           items
+        );
     }
 }
 

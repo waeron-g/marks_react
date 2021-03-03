@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import { Switch, Route } from 'react-router-dom'
 
 class Groups extends React.Component
 {
@@ -17,23 +18,24 @@ class Groups extends React.Component
 
     render ()
     {
-        console.log(this.state);
-        const { error, isLoaded, items } = this.state;
-        if (error) {
-          return <div>Ошибка: {error.message}</div>;
-        } else if (!isLoaded) {
-          return <div>Загрузка...</div>;
-        } else {
-          return (
-            <ul>
-              {items.map(item => (
-                <li key={item.id}>
-                  {item.name} {item.price}
-                </li>
-              ))}
-            </ul>
+        return (
+          <Switch>
+            <Route exact path='/groups/all' component={this.allGroups}/>
+            <Route path='/groups/add' component={this.addGroups}/>
+          </Switch>
           );
-        }    
+    }
+
+    allGroups (){
+      return(
+        <h1>THIS ALL GROUPS</h1>
+      );
+    }
+
+    addGroups (){
+      return(
+        <h1>THIS ADD GROUP</h1>
+      );
     }
 }
 
