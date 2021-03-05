@@ -37,7 +37,7 @@ class AllGroups extends React.Component {
      
       if (items)
       {
-        var groups1 = items.map((obj) => {
+        var groups = items.map((obj) => {
            let link = "groups/edit/"+obj.id;
             return(
             <tr key = {obj.id}>
@@ -48,7 +48,7 @@ class AllGroups extends React.Component {
            );
       });
       return(
-      groups1
+      groups
       );
         }
     return (<tr><td colSpan="3">Loading...</td></tr>);

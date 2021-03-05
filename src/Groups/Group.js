@@ -17,18 +17,32 @@ class Groups extends React.Component {
   render(){
     return (
       <div className="groups-wrapper">
-        <Switch>
-          <Route exact path='/groups' component={AllGroups} />
-          <Route path='/groups/add' component={this.addGroups} />
-        </Switch>
+    
       </div>
     );
   }
 
-  addGroups(){
-    return (
-      <h1>THIS ADD GROUP</h1>
-    );
+    Groups (props)
+    {
+        let items = props.groups;
+        if (items)
+        {
+          var groups = items.map((obj) => {
+             let link = "groups/edit/"+obj.id;
+              return(
+              <tr key = {obj.id}>
+              <td>{obj.id}</td>
+              <td>{obj.code}</td>
+              <td><a href={link}>EDIT</a></td>
+              </tr>
+             );
+        });
+        return(
+        groups
+        );
+          }
+      return (<tr><td colSpan="3">Loading...</td></tr>);
+    }
   }
 }
 

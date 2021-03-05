@@ -12,7 +12,9 @@ class Groups extends React.Component {
   }
 
   componentDidMount(){
-    fetch('https://marks-and-attendance.herokuapp.com/group/getAll').then(response => response.json()).then(data => this.setState({ "groups": data }));
+    fetch('https://marks-and-attendance.herokuapp.com/group/getAll')
+    .then(response => response.json())
+    .then(data => this.setState({ "groups": data }));
   }
 
   render(){
