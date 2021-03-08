@@ -55,7 +55,7 @@ class AllStudents extends React.Component {
       students1
       );
         }
-    return (<tr><td colSpan="3">Loading...</td></tr>);
+    return (<tr><td colSpan="5">Loading...</td></tr>);
   }
 }
 

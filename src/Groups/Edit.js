@@ -72,7 +72,7 @@ class Edit extends React.Component {
       students
       );
     }
-    return(<tr><td colSpan = "3" >LOADING...</td></tr>)
+    return(<tr><td colSpan = "3" >NO ONE Student in group</td></tr>)
   }
 
 
