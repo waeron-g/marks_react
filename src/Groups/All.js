@@ -18,16 +18,16 @@ class AllGroups extends React.Component {
   deleteGroup = (e) =>
   {
     let uuid = e.currentTarget.value;
-    let response = fetch('https://marks-and-attendance.herokuapp.com/group/delete', {
+    console.log(uuid);
+    fetch('https://marks-and-attendance.herokuapp.com/group/delete', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
         },
         body: JSON.stringify({
-            "id": uuid
-        })
+          "id": uuid
+      })
       });
-    console.log(response.json);
     }
 
   render(){
