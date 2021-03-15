@@ -5,7 +5,8 @@ class AddGroup extends React.Component {
   constructor() {
     super();
     this.state = {
-      codeGroup: ''
+      codeGroup: '',
+      status:   '',
     }
   }
 
@@ -23,8 +24,12 @@ class AddGroup extends React.Component {
 //   }
 
   render(){
+    let  success = ""
+    if (this.state.status)
+      success = <p>Group ADDED</p>
     return (
     <div>
+      {success}
       <h1>THIS ADD GROUP</h1>
       <form onSubmit={this.addGroup}>
           <label> enter Code Group
@@ -44,7 +49,6 @@ class AddGroup extends React.Component {
   addGroup = (e) =>
   {
     e.preventDefault();
-    console.log(this.state);
     let code = this.state.codeGroup;
     let response = fetch('https://marks-and-attendance.herokuapp.com/group/add', {
         method: 'POST',
@@ -55,7 +59,7 @@ class AddGroup extends React.Component {
             "code": code
         })
       });
-    console.log(response.json);
+    this.setState({status:"complete"});
     }
       
 }

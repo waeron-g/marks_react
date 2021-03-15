@@ -25,11 +25,14 @@ class Edit extends React.Component {
     var group_data = this.state.group;
     if (group_data)
     {
-      var student_data = this.state.free;
-      console.log(student_data);
+      let group_code = this.state.group.code
+      if (this.state.newCode)
+        group_code = this.state.newCode
       return (
         <div>
-          <h1>THIS {group_data.code} GROUP</h1>
+          <form onSubmit={this.editGroup}>
+          <h1>THIS <input name="code" onChange={this.updateState} value={group_code}></input> GROUP  <input type="submit" value="EDIT"/></h1>
+          </form>
           <table border="1px" width="100%">
               <tbody>
                 <tr>
@@ -47,6 +50,29 @@ class Edit extends React.Component {
       <div><h1>LOADING...</h1></div>
     )
   }
+
+  updateState = (e) => {
+    this.setState({ newCode: e.currentTarget.value })
+  }
+
+  editGroup = (e) =>
+  {
+    e.preventDefault();
+    let code = this.state.newCode;
+    let id = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1);
+    let response = fetch('https://marks-and-attendance.herokuapp.com/group/edit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+            "id": id,
+            "code": code
+        })
+      });
+      console.log(response);
+    this.setState({status:"complete"});
+    }
 
   Students (props)
   {

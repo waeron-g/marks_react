@@ -6,7 +6,8 @@ class Groups extends React.Component {
   constructor() {
     super();
     this.state = {
-      result: ''
+      result: '',
+      status: ''
     }
   }
 
@@ -17,7 +18,6 @@ class Groups extends React.Component {
   render(){
     return (
       <div className="groups-wrapper">
-    
       </div>
     );
   }

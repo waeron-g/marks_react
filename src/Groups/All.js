@@ -5,7 +5,8 @@ class AllGroups extends React.Component {
   constructor() {
     super();
     this.state = {
-      result: ''
+      result: '',
+      status: '',
     }
   }
 
@@ -28,11 +29,16 @@ class AllGroups extends React.Component {
           "id": uuid
       })
       });
+    this.setState({status:'group deleted'});
     }
 
   render(){
+    let  success = ""
+    if (this.state.status)
+      success = <p>{this.state.status}</p>
     return (
     <div>
+      {success}
       <h1>THIS ALL GROUPS</h1>
       <table border="1px" width="100%">
           <tbody>
