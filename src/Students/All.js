@@ -26,7 +26,7 @@ class AllStudents extends React.Component {
                 <th>GROUP</th>
                 <th>EDIT</th>
             </tr>
-          <this.Students students={this.state.students} del_func={this.deleteGroup}/>
+          <this.Students students={this.state.students} del_func={this.deleteStudent}/>
           </tbody>
       </table>
       <a href="/students/add"><button>ADD Student</button></a>
