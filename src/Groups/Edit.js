@@ -15,6 +15,9 @@ class Edit extends React.Component {
     fetch('https://marks-and-attendance.herokuapp.com/group/getById?id='+group)
     .then(response => response.json())
     .then(data => this.setState({ "group": data }));
+    fetch('https://marks-and-attendance.herokuapp.com/student/getAll')
+    .then(response => response.json())
+    .then(data => this.setState({ "free": data }));
     // let response = fetch('https://marks-and-attendance.herokuapp.com/group/edit', {
     //     method: 'POST',
     //     headers: {
@@ -32,6 +35,8 @@ class Edit extends React.Component {
     var group_data = this.state.group;
     if (group_data)
     {
+      var student_data = this.state.free;
+      console.log(student_data);
       return (
         <div>
           <h1>THIS {group_data.code} GROUP</h1>
@@ -59,12 +64,12 @@ class Edit extends React.Component {
     if (items)
     {
       var students = items.map((obj) => {
-        let link = "groups/edit/"+obj.id;
+        let link = "/students/edit/"+obj.id;
         return(
         <tr key = {obj.id}>
         <td>{obj.id}</td>
         <td>{obj.surname} {obj.name}</td>
-        <td><a href="#">EDIT</a></td>
+        <td><a href={link}>EDIT</a></td>
         </tr>
         );
       });
@@ -75,7 +80,15 @@ class Edit extends React.Component {
     return(<tr><td colSpan = "3" >NO ONE Student in group</td></tr>)
   }
 
-
+  AddStudent ()
+  {
+    if (this.state)
+    {
+      let free_students = this.state;
+      console.log(free_students)
+    }
+    return(<p>TEST</p>);
+  }
 
 }
 
