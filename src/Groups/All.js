@@ -10,8 +10,25 @@ class AllGroups extends React.Component {
   }
 
   componentDidMount(){
-    fetch('https://marks-and-attendance.herokuapp.com/group/getAll').then(response => response.json()).then(data => this.setState({ "groups": data }));
+    fetch('https://marks-and-attendance.herokuapp.com/group/getAll')
+    .then(response => response.json())
+    .then(data => this.setState({ "groups": data }));
   }
+
+  deleteGroup = (e) =>
+  {
+    let uuid = e.currentTarget.value;
+    console.log(uuid);
+    fetch('https://marks-and-attendance.herokuapp.com/group/delete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          "id": uuid
+      })
+      });
+    }
 
   render(){
     return (
@@ -24,9 +41,10 @@ class AllGroups extends React.Component {
                 <th>GROUP_NAME</th>
                 <th>ACTION</th>
             </tr>
-          <this.Groups groups={this.state.groups}/>
+          <this.Groups groups={this.state.groups} del_func={this.deleteGroup}/>
           </tbody>
       </table>
+      <a href="/groups/add"><button>ADD GROUP</button></a>
     </div>
     );
   }
@@ -34,7 +52,6 @@ class AllGroups extends React.Component {
   Groups (props)
   {
       let items = props.groups;
-     
       if (items)
       {
         var groups = items.map((obj) => {
@@ -43,7 +60,7 @@ class AllGroups extends React.Component {
             <tr key = {obj.id}>
             <td>{obj.id}</td>
             <td>{obj.code}</td>
-            <td><a href={link}>EDIT</a></td>
+            <td><a href={link}>EDIT</a> <button value={obj.id}  onClick={props.del_func}>DELETE</button></td>
             </tr>
            );
       });
@@ -53,6 +70,7 @@ class AllGroups extends React.Component {
         }
     return (<tr><td colSpan="3">Loading...</td></tr>);
   }
+
 }
 
 

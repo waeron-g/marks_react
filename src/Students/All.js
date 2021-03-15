@@ -26,9 +26,10 @@ class AllStudents extends React.Component {
                 <th>GROUP</th>
                 <th>EDIT</th>
             </tr>
-          <this.Students students={this.state.students}/>
+          <this.Students students={this.state.students} del_func={this.deleteGroup}/>
           </tbody>
       </table>
+      <a href="/students/add"><button>ADD Student</button></a>
     </div>
     );
   }
@@ -39,7 +40,7 @@ class AllStudents extends React.Component {
      
       if (items)
       {
-        var students1 = items.map((obj) => {
+        var students = items.map((obj) => {
            let link = "students/edit/"+obj.id;
             return(
             <tr key = {obj.id}>
@@ -47,16 +48,31 @@ class AllStudents extends React.Component {
             <td>{obj.name}</td>
             <td>{obj.surname}</td>
             <td>{obj.group.code}</td>
-            <td><a href={link}>EDIT</a></td>
+            <td><a href={link}>EDIT</a><button value={obj.id}  onClick={props.del_func}>DELETE</button></td>
             </tr>
            );
       });
       return(
-      students1
+      students
       );
         }
-    return (<tr><td colSpan="3">Loading...</td></tr>);
+    return (<tr><td colSpan="5">Loading...</td></tr>);
   }
+
+
+  deleteStudent = (e) =>
+  {
+    let uuid = e.currentTarget.value;
+    fetch('https://marks-and-attendance.herokuapp.com/student/delete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          "id": uuid
+      })
+      });
+    }
 }
 
 

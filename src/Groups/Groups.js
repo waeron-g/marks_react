@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Switch, Route } from 'react-router-dom'
 import AllGroups from "./All"
 import Edit from "./Edit"
+import AddGroup from "./Add"
 
 class Groups extends React.Component {
   constructor() {
@@ -22,16 +23,10 @@ class Groups extends React.Component {
       <div className="groups-wrapper">
         <Switch>
           <Route exact path='/groups' component={AllGroups} />
-          <Route path='/groups/add' component={this.addGroups} />
+          <Route path='/groups/add' component={AddGroup} />
           <Route path='/groups/edit' component={Edit} />
         </Switch>
       </div>
-    );
-  }
-
-  addGroups(){
-    return (
-      <h1>THIS ADD GROUP</h1>
     );
   }
 }
