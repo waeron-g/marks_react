@@ -18,16 +18,6 @@ class Edit extends React.Component {
     fetch('https://marks-and-attendance.herokuapp.com/student/getAll')
     .then(response => response.json())
     .then(data => this.setState({ "free": data }));
-    // let response = fetch('https://marks-and-attendance.herokuapp.com/group/edit', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json;charset=utf-8',
-    //     },
-    //     body: JSON.stringify({"id":"fbfc14ec-d1d2-4ab2-a55d-4310ee1fc342",
-    //     "code":"411",
-    //     })
-    //   });
-    // console.log(response.json);
     this.setState((state) => {return ({group_id: group})});
     }
 
