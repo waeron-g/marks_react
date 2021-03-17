@@ -95,17 +95,7 @@ class Edit extends React.Component {
     }
     return(<tr><td colSpan = "3" >NO ONE Student in group</td></tr>)
   }
-
-  AddStudent ()
-  {
-    if (this.state)
-    {
-      let free_students = this.state;
-      console.log(free_students)
-    }
-    return(<p>TEST</p>);
-  }
-
+  
 }
 
 
