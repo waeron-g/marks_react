@@ -77,7 +77,7 @@ class Edit extends React.Component {
   Students (props)
   {
     var items = props.students;
-    if (items)
+    if (items.length > 0)
     {
       var students = items.map((obj) => {
         let link = "/students/edit/"+obj.id;
@@ -94,16 +94,6 @@ class Edit extends React.Component {
       );
     }
     return(<tr><td colSpan = "3" >NO ONE Student in group</td></tr>)
-  }
-
-  AddStudent ()
-  {
-    if (this.state)
-    {
-      let free_students = this.state;
-      console.log(free_students)
-    }
-    return(<p>TEST</p>);
   }
 
 }
