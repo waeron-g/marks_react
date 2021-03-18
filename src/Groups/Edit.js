@@ -95,7 +95,6 @@ class Edit extends React.Component {
     }
     return(<tr><td colSpan = "3" >NO ONE Student in group</td></tr>)
   }
-
 }
 
 
