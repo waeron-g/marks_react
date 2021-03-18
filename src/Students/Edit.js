@@ -27,17 +27,25 @@ class Edit extends React.Component {
     var student_data = this.state.student;
     if (student_data)
     {
-      let student_code = this.state.student.code
-      if (this.state.newCode)
-        student_code = this.state.newCode
+      let student_name = this.state.student.name
+      if (this.state.name)
+      student_name = this.state.name
+
+      let student_surname = this.state.student.surname
+      if (this.state.surname)
+      student_surname = this.state.surname
+
+      let student_group = this.state.student.group
+      if (this.state.group)
+      student_group = this.state.group
       return (
         <div>
-         <form>
+         <form onSubmit={this.editStudent}>
           <label> enter Student Name
-              <input name="code" placeholder="CODE GROUP" value={student_data.name}/> 
+              <input name="code" placeholder="CODE GROUP" onChange={this.updateName} value={student_name}/> 
           </label>
           <label> enter Student Surname
-              <input name="code" placeholder="CODE GROUP" value={student_data.surname}/> 
+              <input name="code" placeholder="CODE GROUP" onChange={this.updateSurname} value={student_surname}/> 
           </label>
           <label> enter Student Group
             <this.getGroups groups = {this.state.groups} group = {student_data.group.id} Change={this.updateGroup}/>
@@ -75,24 +83,44 @@ class Edit extends React.Component {
       return (<select><option>Loading...</option></select>);
   }
 
+  updateName = (e) => {
+    this.setState({ name: e.currentTarget.value })
+  }
+
+  updateSurname = (e) => {
+    this.setState({ surname: e.currentTarget.value })
+  }
+
+  updateGroup = (e) => {
+    this.setState({ group: e.currentTarget.value })
+  }
+
   editStudent = (e) =>
   {
     e.preventDefault();
-    let code = this.state.newCode;
+    let name = (this.state.name) ? this.state.name :this.state.student.name;
+    let surname = (this.state.surname) ? this.state.surname :this.state.student.surname;
+    let group = (this.state.group) ? this.state.group :this.state.student.group;
+    
     let id = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1);
-    let response = fetch('https://marks-and-attendance.herokuapp.com/student/edit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify({
-            "id": id,
-            "code": code
-        })
-      });
-      console.log(response);
-    this.setState({status:"complete"});
-    }
+    
+      let response = fetch('https://marks-and-attendance.herokuapp.com/student/edit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+          },
+          body: JSON.stringify({
+            "name": name,
+            "surname": surname,
+            "group" : group,
+            "id": id
+          })
+        });
+        console.log(response);
+      this.setState({status:"complete"});
+      alert('ok')
+      }
+    
 
 }
 
