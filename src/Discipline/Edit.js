@@ -34,10 +34,10 @@ class Edit extends React.Component {
       if (this.state.status === "complete")
         success = <h1>DISCIPLINE EDITED</h1>
       return (
-        <div>
+        <div className="main_block">
           {success}
           <form onSubmit={this.editDiscipline}>
-          <h1>THIS <input name="code" onChange={this.updateState} value={discipline_name}></input> Discipline  <input type="submit" value="EDIT"/></h1>
+          <h1 className="zagolovok_main">Название: <input name="code" onChange={this.updateState} value={discipline_name}></input><input type="submit" value="EDIT"/></h1>
           </form>
         </div>
       );

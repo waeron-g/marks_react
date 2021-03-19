@@ -13,16 +13,16 @@ class AddDiscipline extends React.Component {
   render(){
     let  success = ""
     if (this.state.status)
-      success = <p>Group ADDED</p>
+      success = <p>Дисциплина добавлена</p>
     return (
-    <div>
+    <div className="main_block">
       {success}
-      <h1>THIS ADD GROUP</h1>
+      <h1 className="zagolovok_main">Добавление дисциплины</h1>
       <form onSubmit={this.addDiscipline}>
-          <label> enter Discipline name
-              <input name="code" placeholder="CODE GROUP" onChange={this.updateState} value={this.state.disciplineName}/> 
+          <label> Введите название: 
+              <input name="code" placeholder="Название" onChange={this.updateState} value={this.state.disciplineName}/> 
           </label>
-          <input type="submit" value="ADD"/>
+          <input className="btn_edit_custom" type="submit" value="Создать"/>
       </form>
     </div>
     );
