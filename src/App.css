@@ -1,3 +1,7 @@
+a{
+  text-decoration: none;
+}
+
 .App {
   display:flex;
   background-color: rgb(27, 64, 85);
@@ -47,4 +51,69 @@ main {
   color:#3D7648!important;
   height: 90px;
   align-items: center;
+}
+
+.zagolovok_main{
+  text-align: center;
+}
+
+.table_custom {
+  border: 1px solid black;
+  border-spacing: 0px;
+  background: white;
+  border-collapse: separate;
+}
+
+.table_custom th{
+  border: 1px solid black;
+}
+
+.table_custom td{
+  border: 1px solid black;
+}
+
+.main_block{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.btn_custom{
+  font-size: 18px;
+  margin-top: 10px;
+  border-radius: 0px;
+  border-color: black;
+  padding: 8px 12px 8px 12px;
+  background: #3D7648;
+  color: white;
+  cursor: pointer;
+}
+
+.btn_custom_small{
+  border: 1px solid black;
+  border-radius: 0px;
+  border-color: black;
+  background: #CC2121;
+  color: white;
+  cursor: pointer;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2px 5px 3px 5px;
+  margin-right: 1px;
+}
+
+.btn_edit_custom{
+  background: #3D7648;
+  color: white;
+  cursor: pointer;
+  border-color: black;
+  border: 1px solid black;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 3px 5px 3px 5px;
+}
+
+.cst{
+  height: 30px;
 }

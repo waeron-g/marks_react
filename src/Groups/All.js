@@ -37,20 +37,20 @@ class AllGroups extends React.Component {
     if (this.state.status)
       success = <p>{this.state.status}</p>
     return (
-    <div>
+    <div className="main_block">
       {success}
-      <h1>THIS ALL GROUPS</h1>
-      <table border="1px" width="100%">
+      <h1 className="zagolovok_main">Группы</h1>
+      <table className="table_custom" width="100%">
           <tbody>
             <tr>
-                <th>GROUP_ID</th>
-                <th>GROUP_NAME</th>
-                <th>ACTION</th>
+                <th>Id Группы</th>
+                <th>Номер Группы</th>
+                <th>Редактирование</th>
             </tr>
           <this.Groups groups={this.state.groups} del_func={this.deleteGroup}/>
           </tbody>
       </table>
-      <a href="/groups/add"><button>ADD GROUP</button></a>
+      <a href="/groups/add"><button className="btn_custom">Добавить группу</button></a>
     </div>
     );
   }
@@ -66,7 +66,7 @@ class AllGroups extends React.Component {
             <tr key = {obj.id}>
             <td>{obj.id}</td>
             <td>{obj.code}</td>
-            <td><a href={link}>EDIT</a> <button value={obj.id}  onClick={props.del_func}>DELETE</button></td>
+            <td><a className="btn_edit_custom" href={link}>Редактировать</a> <button className="btn_custom_small" value={obj.id}  onClick={props.del_func}>Удалить</button></td>
             </tr>
            );
       });

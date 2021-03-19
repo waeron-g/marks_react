@@ -15,21 +15,21 @@ class AllStudents extends React.Component {
 
   render(){
     return (
-    <div>
-      <h1>THIS ALL Students</h1>
-      <table border="1px" width="100%">
+    <div className="main_block">
+      <h1 className="zagolovok_main">Список студентов</h1>
+      <table className="table_custom" width="100%">
           <tbody>
             <tr>
-                <th>STD_ID</th>
-                <th>STD_NAME</th>
-                <th>STD_SURNAME</th>
-                <th>GROUP</th>
-                <th>EDIT</th>
+                <th>Id студента</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Группа</th>
+                <th max-width="60">Редактирование</th>
             </tr>
           <this.Students students={this.state.students} del_func={this.deleteStudent}/>
           </tbody>
       </table>
-      <a href="/students/add"><button>ADD Student</button></a>
+      <a href="/students/add"><button className="btn_custom">Добавить студента</button></a>
     </div>
     );
   }
@@ -48,7 +48,7 @@ class AllStudents extends React.Component {
             <td>{obj.name}</td>
             <td>{obj.surname}</td>
             <td>{obj.group.code}</td>
-            <td><a href={link}>EDIT</a><button value={obj.id}  onClick={props.del_func}>DELETE</button></td>
+            <td className="cst"><a className="btn_edit_custom" href={link}>Редактировать</a><button className="btn_custom_small" value={obj.id}  onClick={props.del_func}>Удалить</button></td>
             </tr>
            );
       });

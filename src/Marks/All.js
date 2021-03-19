@@ -27,12 +27,12 @@ class AllMarks extends React.Component {
     (this.state.type === "group" ) ? <this.groupRender updateG = {this.updateGroup} updateD = {this.updateDiscipline}/>: <p></p>;
     return (
     <div>
-      <h1>THIS JOURNAL PARAMS</h1>
+      <h1 className="zagolovok_main">Журнал</h1>
       <label>START DATE<input onChange={this.updateStartTime} type="date" value = {this.state.time_start} /></label>
       <label>END DATE<input type="date" onChange={this.updateEndTime} value = {this.state.time_end} /></label><br/>
       <this.typeJournal current={this.state.type} Change={this.updateType}/><br/>
       {SelectRender}
-      <a href ={this.state.link}><button>SHOW JOURNAL</button></a>
+      <a href ={this.state.link}><button className="btn_custom">SHOW JOURNAL</button></a>
     </div>
     );
   }
