@@ -6,7 +6,6 @@ import Journal from "./Journal"
 class Students extends React.Component {
 
   render(){
-    console.log(this.props.match.params);
     return (
       <div className="students-wrapper">
         <Switch>

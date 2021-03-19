@@ -32,7 +32,7 @@ class AllMarks extends React.Component {
       <label>END DATE<input type="date" onChange={this.updateEndTime} value = {this.state.time_end} /></label><br/>
       <this.typeJournal current={this.state.type} Change={this.updateType}/><br/>
       {SelectRender}
-      <a href ={this.state.link}><button>SHOW JOURNAL</button></a>
+      <a href ={this.state.link}><button onClick = {this.updateLink}>SHOW JOURNAL</button></a>
     </div>
     );
   }
@@ -52,6 +52,7 @@ class AllMarks extends React.Component {
         });
       return(
         <select onChange={props.update}>
+         <option >SELECT STUDENT</option>
           {items}
         </select>
       )
@@ -89,6 +90,7 @@ class AllMarks extends React.Component {
       return(
         <div>
           <select onChange={props.updateG}>
+          <option >SELECT GROUP</option>
             {items}
           </select>
           <select onChange={props.updateD}>
@@ -134,6 +136,10 @@ class AllMarks extends React.Component {
 
   updateType = (e) => {
     this.setState({ type: e.currentTarget.value })
+    if (e.currentTarget.value === "student")
+      this.setState({group:"", discipline:""})
+    if (e.currentTarget.value === "group")
+      this.setState({student:""})
     this.updateLink();
   }
 
@@ -144,6 +150,11 @@ class AllMarks extends React.Component {
 
   updateGroup = (e) => {
     this.setState({ group: e.currentTarget.value })
+    this.updateLink();
+  }
+
+  updateDiscipline = (e) => {
+    this.setState({ discipline: e.currentTarget.value })
     this.updateLink();
   }
 
@@ -163,7 +174,9 @@ class AllMarks extends React.Component {
     let student = this.state.student;
     let group = this.state.group;
     let discipline = this.state.discipline;
-    let time = this.state.time_start + "." + this.state.time_end;
+    let time_end  = (this.state.time_end) ? this.state.time_end : this.DateToString(null);
+    let time_start =  (this.state.time_start) ? this.state.time_start :  this.DateToString(Date.parse(time_end)-7*24*60*60*1000);
+    let time = time_start + "." + time_end;
     if (this.state.type)
     {
       if (this.state.type === "student")
@@ -180,6 +193,16 @@ class AllMarks extends React.Component {
       }
     }
   }
+
+  DateToString = (DateString) =>
+  {
+      let Day = (DateString) ? new Date(DateString): new Date();
+      let dd = String(Day.getDate()).padStart(2, '0');
+      let mm = String(Day.getMonth() + 1).padStart(2, '0');
+      let yyyy = Day.getFullYear();
+      return(yyyy + '-' + mm + '-' + dd);
+  }
+
 }
 
 
