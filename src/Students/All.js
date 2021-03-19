@@ -24,7 +24,7 @@ class AllStudents extends React.Component {
                 <th>Имя</th>
                 <th>Фамилия</th>
                 <th>Группа</th>
-                <th max-width="60">Редактирование</th>
+                <th width="200px">Редактирование</th>
             </tr>
           <this.Students students={this.state.students} del_func={this.deleteStudent}/>
           </tbody>
@@ -48,7 +48,7 @@ class AllStudents extends React.Component {
             <td>{obj.name}</td>
             <td>{obj.surname}</td>
             <td>{obj.group.code}</td>
-            <td className="cst"><a className="btn_edit_custom" href={link}>Редактировать</a><button className="btn_custom_small" value={obj.id}  onClick={props.del_func}>Удалить</button></td>
+            <td className="cst"><a className="btn_edit_custom1" href={link}>Редактировать</a><button className="btn_custom_small" value={obj.id}  onClick={props.del_func}>Удалить</button></td>
             </tr>
            );
       });

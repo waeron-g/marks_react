@@ -42,14 +42,14 @@ class AllDisciplines extends React.Component {
       <table className="table_custom" width="100%">
           <tbody>
             <tr>
-                <th>Discipline_ID</th>
-                <th>Discipline_NAME</th>
-                <th>ACTION</th>
+                <th>Id дисциплины</th>
+                <th>Дисциплина</th>
+                <th width="200px">Редактирование</th>
             </tr>
           <this.Disciplines disciplines={this.state.disciplines} del_func={this.deleteDiscipline}/>
           </tbody>
       </table>
-      <a href="/disciplines/add"><button className="btn_custom">ADD Discipline</button></a>
+      <a href="/disciplines/add"><button className="btn_custom">Добавить</button></a>
     </div>
     );
   }
@@ -65,7 +65,7 @@ class AllDisciplines extends React.Component {
             <tr key = {obj.id}>
             <td>{obj.id}</td>
             <td>{obj.name}</td>
-            <td><a className="btn_edit_custom" href={link}>Редактировать</a> <button className="btn_custom_small" value={obj.id}  onClick={props.del_func}>Удалить</button></td>
+            <td className="cst"><a className="btn_edit_custom1" href={link}>Редактировать</a> <button className="btn_custom_small" value={obj.id}  onClick={props.del_func}>Удалить</button></td>
             </tr>
            );
       });

@@ -45,7 +45,7 @@ class AllGroups extends React.Component {
             <tr>
                 <th>Id Группы</th>
                 <th>Номер Группы</th>
-                <th>Редактирование</th>
+                <th width="200px">Редактирование</th>
             </tr>
           <this.Groups groups={this.state.groups} del_func={this.deleteGroup}/>
           </tbody>
@@ -66,7 +66,7 @@ class AllGroups extends React.Component {
             <tr key = {obj.id}>
             <td>{obj.id}</td>
             <td>{obj.code}</td>
-            <td><a className="btn_edit_custom" href={link}>Редактировать</a> <button className="btn_custom_small" value={obj.id}  onClick={props.del_func}>Удалить</button></td>
+            <td className="cst"><a className="btn_edit_custom1" href={link}>Редактировать</a> <button className="btn_custom_small" value={obj.id}  onClick={props.del_func}>Удалить</button></td>
             </tr>
            );
       });

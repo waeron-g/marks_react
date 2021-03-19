@@ -39,18 +39,19 @@ class Edit extends React.Component {
       if (this.state.group)
       student_group = this.state.group
       return (
-        <div>
+        <div className="main_block">
+        <h1 className="zagolovok_main">Редактирование</h1>
          <form onSubmit={this.editStudent}>
-          <label> enter Student Name
-              <input name="code" placeholder="CODE GROUP" onChange={this.updateName} value={student_name}/> 
-          </label>
-          <label> enter Student Surname
-              <input name="code" placeholder="CODE GROUP" onChange={this.updateSurname} value={student_surname}/> 
-          </label>
-          <label> enter Student Group
+          <label> Введите имя студента: 
+              <input name="code" placeholder="Имя" onChange={this.updateName} value={student_name}/> 
+          </label><br/>
+          <label> Введите фамилию студента: 
+              <input name="code" placeholder="Фамилия" onChange={this.updateSurname} value={student_surname}/> 
+          </label><br/>
+          <label> Введите группу студента: 
             <this.getGroups groups = {this.state.groups} group = {student_data.group.id} Change={this.updateGroup}/>
-          </label>
-          <input type="submit" value="EDIT"/>
+          </label><br/>
+          <input className="btn_custom_l" type="submit" value="Редактировать"/>
         </form>
         </div>
       );

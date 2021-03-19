@@ -29,16 +29,16 @@ class Edit extends React.Component {
       if (this.state.newCode)
         group_code = this.state.newCode
       return (
-        <div>
+        <div className="main_block">
           <form onSubmit={this.editGroup}>
-          <h1>THIS <input name="code" onChange={this.updateState} value={group_code}></input> GROUP  <input type="submit" value="EDIT"/></h1>
+          <h1 className="zagolovok_main">Группа №<input name="code" onChange={this.updateState} value={group_code}></input> <input className="btn_custom" type="submit" value="EDIT"/></h1>
           </form>
-          <table border="1px" width="100%">
+          <table className="table_custom" width="100%">
               <tbody>
                 <tr>
-                    <th>STUDENT_ID</th>
-                    <th>STUDENT_NAME</th>
-                    <th>ACTION</th>
+                    <th>Id студента</th>
+                    <th>Имя</th>
+                    <th>Редактирование</th>
                 </tr>
               <this.Students students={group_data.students}/>
               </tbody>
@@ -85,7 +85,7 @@ class Edit extends React.Component {
         <tr key = {obj.id}>
         <td>{obj.id}</td>
         <td>{obj.surname} {obj.name}</td>
-        <td><a href={link}>EDIT</a></td>
+        <td className="cst"><a className="btn_edit_custom" href={link}>EDIT</a></td>
         </tr>
         );
       });

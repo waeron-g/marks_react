@@ -27,7 +27,7 @@ class Header extends React.Component
         }
         return (
             <header className = "main_menu">
-            <a href = "/" ><img src= {logo} height="90px"></img></a>
+            <a className="logo_custom" href = "/" ><img src= {logo}></img></a>
             <this.menuElements links = {links} route={window.location.pathname}/>
             </header>
         )

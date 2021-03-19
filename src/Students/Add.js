@@ -30,19 +30,19 @@ class AddStudent extends React.Component {
 
   render(){
     return (
-    <div>
-      <h1>THIS ADD Student</h1>
+    <div className="main_block">
+      <h1 className="zagolovok_main">Добавление студентов</h1>
       <form onSubmit={this.addStudent}>
-          <label> enter Student Name
+          <label> Имя
               <input name="code" placeholder="CODE GROUP" onChange={this.updateName} value={this.state.name}/> 
           </label>
-          <label> enter Student Surname
+          <label> Фамилия
               <input name="code" placeholder="CODE GROUP" onChange={this.updateSurname} value={this.state.surname}/> 
           </label>
-          <label> enter Student Group
+          <label> Номер группы
             <this.getGroups groups = {this.state.groups} Change={this.updateGroup}/> 
           </label>
-          <input type="submit" value="ADD"/>
+          <input className="btn_edit_custom" type="submit" value="ADD"/>
       </form>
     </div>
     );
