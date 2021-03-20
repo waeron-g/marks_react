@@ -89,12 +89,48 @@ class Students extends React.Component {
   {
     if (this.state.student)
     {
-      let marks = this.state.marks.map( (obj) => {
-        if (obj.studentId === this.state.student.id)
-          return(obj)
-        return(null)
-      });
-      // Я ХЗ КАК Я ЭТО ЗАПИЛЮ
+      let student = this.state.student;
+      let days = this.state.days;
+      let marks = this.state.marks;
+      let disciplines = this.state.disciplines;
+      let rows = disciplines.map((discipline)=>{
+        let cells = days.map((day) =>{
+          let cell = marks.find((mark) =>{
+            if(mark.discipline.id === discipline.id && mark.date === day && mark.studentId.id === student.id)
+                return(true)
+              return (false)
+          });
+          if (cell !== undefined)
+          {
+            let val = (cell.mark > 0) ? cell.mark : (cell.visited) ? "+" : "-";
+            return(
+              <td key = {cell.studentId.id+"+" + day}>
+              <input
+                data-mark = {cell.id} 
+                data-student={cell.studentId.id} 
+                data-discipline={cell.discipline.id}
+                data-date={day} 
+                defaultValue={val} onChange={this.updateMark}/>
+              </td>
+            );
+          }
+          return(
+            <td key = {student.id+"+" + day}>
+            <input 
+              data-student={student.id} 
+              data-discipline={discipline.id}
+              data-date={day} 
+              onChange={this.updateMark}
+              />
+            </td>
+          )});
+          return(
+            <tr key = {discipline.id}>
+              <td> {discipline.name} </td>
+              {cells}
+            </tr>
+          );});
+          return (rows); 
     }
     if (this.state.group && this.state.marks)
     {
@@ -149,7 +185,6 @@ class Students extends React.Component {
     return (<tr><td>LOADING...</td></tr>)
   }
 
-  //on unfocus
   updateMark = (e) => {
     let dataset = e.currentTarget.dataset;
     let newValue = e.currentTarget.value;
@@ -167,7 +202,7 @@ class Students extends React.Component {
 
   editMark = (dataset, value) =>
   {
-    let mark = (parseInt(value) != NaN) ? value : 0;
+    let mark = (parseInt(value) > 0) ? value : 0;
     let visited = (mark > 0) ? true : (value === "+") ? true : false;
   let responce = fetch('https://marks-and-attendance.herokuapp.com/mark/edit', {
       method: 'POST',
@@ -187,7 +222,7 @@ class Students extends React.Component {
   
   addMark = (dataset, value) =>
   {
-      let mark = (parseInt(value) != NaN) ? value : 0;
+      let mark = (parseInt(value) > 0) ? value : 0;
       let visited = (mark > 0) ? true : (value === "+") ? true : false;
     let responce = fetch('https://marks-and-attendance.herokuapp.com/mark/add', {
         method: 'POST',

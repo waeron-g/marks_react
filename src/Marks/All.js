@@ -20,7 +20,6 @@ class AllMarks extends React.Component {
   }
 
   render(){
-    console.log(this.state.link);
     let SelectRender = ""
     if (this.state.type)
     SelectRender = (this.state.type === "student" ) ? <this.studentRender update = {this.updateStudent}/> : 
@@ -94,7 +93,7 @@ class AllMarks extends React.Component {
             {items}
           </select>
           <select onChange={props.updateD}>
-          <option  value={null}>Without discipline</option>
+          <option  value={null}>Select discipline</option>
             {disc}
           </select>
         </div>
@@ -204,7 +203,5 @@ class AllMarks extends React.Component {
   }
 
 }
-
-
 
 export default AllMarks;
