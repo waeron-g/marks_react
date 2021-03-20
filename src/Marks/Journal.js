@@ -66,9 +66,9 @@ class Students extends React.Component {
       let Rows = this.getRows();
       let Discipline_name = this.getDisciplineName(this.state.discipline);
       return (
-        <div>
+        <div className="main_block">
           <h1>{Discipline_name}</h1>
-        <table border="1px" width="100%">
+        <table className="table_custom" width="100%">
           <tbody>
             <tr>
             <th>{Header}</th>

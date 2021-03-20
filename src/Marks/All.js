@@ -31,7 +31,7 @@ class AllMarks extends React.Component {
       <label>Конец: <input type="date" onChange={this.updateEndTime} value = {this.state.time_end} /></label><br/>
       <this.typeJournal current={this.state.type} Change={this.updateType}/><br/>
       {SelectRender}
-      <a href ={this.state.link}><button className="btn_custom" onClick = {this.updateLink}>Показать</button></a>
+      <a href ={this.state.link}><button className="btn_custom_l" onClick = {this.updateLink}>Показать</button></a>
     </div>
     );
   }
